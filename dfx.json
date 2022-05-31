@@ -4,19 +4,6 @@
       "candid": "src/amleth/amleth.did",
       "package": "amleth",
       "type": "rust"
-    },
-    "amleth_assets": {
-      "dependencies": [
-        "amleth"
-      ],
-      "frontend": {
-        "entrypoint": "src/amleth_assets/src/index.html"
-      },
-      "source": [
-        "src/amleth_assets/assets",
-        "dist/amleth_assets/"
-      ],
-      "type": "assets"
     }
   },
   "defaults": {
