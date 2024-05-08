@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 import logging
 import os
 import sqlite3
@@ -54,6 +55,8 @@ class Database:
     # optimization may need to happen.
     def __init__(self, config):
         self.db_file = config.get("SQLITE_FILE")
+        self.insertion_count = 0
+        self.emitted_metric = False
 
         if not self.check_database_health():
             raise Exception("Database check failed.")
@@ -109,4 +112,16 @@ class Database:
             # Execute the query with the tuple of values
             cur.execute(sql, values)
             con.commit()
-            logging.info(f"Committed SQL insert {values}")
+            logging.debug(f"Committed SQL insert {values}")
+            self.insertion_count += 1
+
+            current_utc_time = datetime.now(timezone.utc)
+
+            # Check if it is 11 AM
+            if current_utc_time.minute == 0 and self.emitted_metric == False:
+                logging.info(f"Inserted {self.insertion_count} records")
+                self.insertion_count = 0
+                self.emitted_metric = True
+            else:
+                self.emitted_metric = False
+
