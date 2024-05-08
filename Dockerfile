@@ -4,7 +4,7 @@ FROM python:3.12
 # Set the working directory in the container
 WORKDIR /amleth
 
-# Copy the current directory contents into the container at /app
+# Copy the current directory contents into the container at /amleth
 COPY . /amleth
 
 # Install any needed packages specified in requirements.txt

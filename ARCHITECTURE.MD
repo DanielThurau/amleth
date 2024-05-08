@@ -25,7 +25,7 @@ amleth/
 ├── requirements.txt               # Project dependencies
 ├── Dockerfile                     # Container definition
 ├── README.md                      # Project overview
-├── ARCHITECTURE.md                # Project layour overview
+├── ARCHITECTURE.md                # Project layout overview
 ├── LICENSE                        # LICENSE 
 └── .gitignore                     # Specifies intentionally untracked files to ignore
 ```
